@@ -16,6 +16,6 @@ $ docker-compose up
 ```
 
 ## Notable technologies used
-    1. [htmx](https://htmx.org/)
-    2. [bun](https://bun.sh/)
-    3. [gql.tada](https://gql-tada.0no.co/)
+[htmx](https://htmx.org/)
+[bun](https://bun.sh/)
+[gql.tada](https://gql-tada.0no.co/)
