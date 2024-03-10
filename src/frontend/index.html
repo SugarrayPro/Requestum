@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Requestum</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="flex justify-center h-screen">
+    <div class="text-center p-10">
+      <h1 class="text-2xl font-bold mb-4">
+        Top 5 common repositories by contributors for a given repository
+      </h1>
+      <form
+        hx-post="/rankings"
+        hx-target="#dataList"
+        hx-swap="innerHTML"
+        hx-headers='{"X-Requested-With": "XMLHttpRequest"}'
+        hx-trigger="submit"
+        hx-boost="true"
+        onsubmit="submitButton.disabled = true;"
+      >
+        <input
+          type="text"
+          id="inputField"
+          name="ghUrl"
+          placeholder="Enter github url"
+          class="h-10 w-4/5 border border-gray-300 rounded-md px-4 py-2 mb-4"
+        />
+        <button
+          type="submit"
+          id="submitButton"
+          class="h-10 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded h-12 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Rank
+        </button>
+      </form>
+
+      <div class="max-w-md mx-auto">
+        <ul class="list-decimal p-0" id="dataList"></ul>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("htmx:afterSwap", function (event) {
+        const submitButton = document.getElementById("submitButton");
+        // Re-enable the button
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>

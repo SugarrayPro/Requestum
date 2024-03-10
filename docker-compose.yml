@@ -1,0 +1,10 @@
+version: "3"
+services:
+  bun:
+    build: .
+    image: requestum
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    command: bun run start
